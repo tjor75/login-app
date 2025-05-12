@@ -1,20 +1,30 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { StyleSheet, Text, TextInput, Button, ImageBackground, TouchableOpacity, Pressable, Image, View } from 'react-native';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from './firebaseConfig.js';
 import Background from './assets/images/background.png';
 import Verificado from './assets/images/icons/verificado.png';
 import NoVerificado from './assets/images/icons/no-verificado.png';
 
 export default function App() {
-  const [username, handleUsernameChange] = useState('');
+  const [email, handleEmailChange] = useState('');
   const [contrasenia, handleContraseniaChange] = useState('');
-  const [logueado, setLogueado] = useState(false);
   const [verificado, setVerificado] = useState(false);
+  const [user, setUser] = useState(null);
 
   const mantenerPresionado = () => setVerificado(true);
-  const loguearse = () => {
-    if (verificado && username.toLowerCase() === 'jorge.luis' && contrasenia === 'Kapow123')
-      setLogueado(true);
+
+  const loguearse = async () => {
+    if (user === null && email !== null && contrasenia !== null && verificado) {
+      signInWithEmailAndPassword(auth, email, contrasenia)
+        .then(userCredential => {
+          setUser(userCredential.user);
+        })
+        .catch(error => {
+          console.error(error)
+        })
+    }
   };
 
   return (
@@ -26,11 +36,11 @@ export default function App() {
       <ImageBackground source={Background} style={styles.formulario}>
         <View style={styles.formularioContainer}>
           <View>
-            <Text style={styles.label}>Usuario:</Text>
+            <Text style={styles.label}>Emails:</Text>
             <TextInput
-              placeholder="Jorge.luis"
-              value={username}
-              onChangeText={handleUsernameChange}
+              placeholder="jorge.luis@ort.edu.ar"
+              value={email}
+              onChangeText={handleEmailChange}
               style={styles.input}
             />
           </View>
@@ -63,7 +73,7 @@ export default function App() {
             </TouchableOpacity>
           </View>
 
-          {logueado && <Text style={styles.logueadoText}>¡Logueado!</Text>}
+          {user !== null && <Text style={styles.logueadoText}>¡Logueado!</Text>}
         </View>
       </ImageBackground>
 
