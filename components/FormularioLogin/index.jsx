@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Text, TextInput, Button, TouchableOpacity, View } from "react-native";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../utils/firebaseConfig.js";
-import { Verificador } from "../UI/Verificador";
+import Verificador from "../UI/Verificador";
 import styles from "./styles.jsx";
 
 export default function FormularioLogin({ user, setUser }) {

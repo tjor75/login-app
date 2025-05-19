@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { ImageBackground, View } from "react-native";
-import { ScreenHeader } from "../../components/UI/ScreenHeader";
-import { FormularioLogin } from "../../components/FormularioLogin";
+import ScreenHeader from "../../components/UI/ScreenHeader";
+import FormularioLogin from "../../components/FormularioLogin";
 import Background from "../../assets/images/background.png";
 import styles from "./styles.jsx";
 
