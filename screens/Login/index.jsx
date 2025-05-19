@@ -10,7 +10,7 @@ export default function Login() {
     <View style={styles.container}>
       <ScreenHeader texto="Portal de Socios" />
 
-      <ImageBackground source={Background} style={styles.formularioLoginIB}>
+      <ImageBackground source={Background} resizeMode="cover" style={styles.formularioLoginIB}>
         <FormularioLogin />
       </ImageBackground>
 

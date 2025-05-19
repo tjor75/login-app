@@ -9,7 +9,7 @@ export default function FormularioLogin({ user, setUser }) {
   const [email, handleEmailChange] = useState("");
   const [contrasenia, handleContraseniaChange] = useState("");
   const [verificado, setVerificado] = useState(false);
-
+  
   const loguearse = async () => {
     if (user === null && email !== null && contrasenia !== null && verificado) {
       signInWithEmailAndPassword(auth, email, contrasenia)
@@ -59,7 +59,7 @@ export default function FormularioLogin({ user, setUser }) {
         </TouchableOpacity>
       </View>
 
-      {user !== null && <Text style={styles.logueadoText}>¡Logueado!</Text>}
+      {user && <Text style={styles.logueadoText}>¡Logueado!</Text>}
     </View>
   );
 }
