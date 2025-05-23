@@ -1,12 +1,12 @@
 import { useState } from "react";
-import Login from "./screens/Login";
+import LoginScreen from "./screens/LoginScreen";
 
 export default function App() {
   const [user, setUser] = useState(null);
 
   return (
     <>
-      <Login user={user} setUser={setUser} />
+      <LoginScreen user={user} setUser={setUser} />
     </>
   );
 }

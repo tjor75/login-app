@@ -5,7 +5,7 @@ import FormularioLogin from "../../components/FormularioLogin";
 import Background from "../../assets/images/background.png";
 import styles from "./styles.jsx";
 
-export default function Login() {
+export default function LoginScreen() {
   return (
     <View style={styles.container}>
       <ScreenHeader texto="Portal de Socios" />
